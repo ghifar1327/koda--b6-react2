@@ -1,4 +1,6 @@
 import { useState } from "react";
+import CounterButton from "./CounterButton";
+import CounterDisplay from "./CounterDisplay";
 
 const Counter = function () {
   const [number, setNumber] = useState(0);
@@ -8,7 +10,8 @@ const Counter = function () {
       setNumber(number + 1);
     }
   }
-  function descrement() {
+
+  function decrement() {
     if (number > 0) {
       setNumber(number - 1);
     }
@@ -16,20 +19,11 @@ const Counter = function () {
 
   return (
     <div className="flex gap-5 h-20">
-      <button
-        onClick={descrement}
-        className="bg-amber-400 flex justify-center items-center w-20 text-5xl rounded-xl"
-      >
-        <p className="pb-2 font-semi">-</p>
-      </button>
-      <div className="flex text-5xl items-center font-bold">{number}</div>
-      <button
-        onClick={increment}
-        className="bg-cyan-400 flex justify-center items-center w-20 text-5xl rounded-xl"
-      >
-        <p className="pb-2 font-semi">+</p>
-      </button>
+      <CounterButton onClick={decrement}className="bg-amber-400">-</CounterButton>
+      <CounterDisplay value={number} />
+      <CounterButton onClick={increment} className="bg-cyan-400">+</CounterButton>
     </div>
   );
 };
+
 export default Counter;
